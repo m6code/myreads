@@ -1,6 +1,7 @@
 import React from 'react'
 import Book from './Book'
 import PropTypes from 'prop-types'
+import { Link } from 'react-router-dom'
 
 function BookShelf(props) {
 
@@ -39,7 +40,12 @@ function BookShelf(props) {
                 }
 
                 <div className="open-search">
-                    <button onClick={() => props.openSearch()}>Add a book</button>
+                    <button onClick={() => props.history.push('/search')}>Add a book</button>
+
+                    {/* <Link to='/search'>
+                        <button>Add a book</button>
+                    </Link> */}
+                    
                 </div>
             </div>
         </div>
@@ -47,7 +53,7 @@ function BookShelf(props) {
 }
 
 BookShelf.propTypes = {
-    openSearch: PropTypes.func.isRequired,
+    history: PropTypes.object.isRequired,
     books: PropTypes.array.isRequired
 }
 
