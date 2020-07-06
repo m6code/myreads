@@ -1,5 +1,5 @@
 import React from 'react'
-import Section from './Section'
+import Book from './Book'
 import PropTypes from 'prop-types'
 
 function BookShelf(props) {
@@ -10,15 +10,18 @@ function BookShelf(props) {
                     <h1>MyReads</h1>
                 </div>
 
-                <Section sectionTitle={'Reading'}>
-                    <li>Return a list of currently reading books here</li>
-                </Section>
-                <Section sectionTitle={'Want to Read'}>
-                    <li>Return a list of books you'd like to read here</li>
-                </Section>
-                <Section sectionTitle={'Read'}>
-                    <li>Return a list of read books here</li>
-                </Section>
+                <div className="list-books-content">
+                    <div>
+                        <div className="bookshelf">
+                            <h2 className="bookshelf-title">Reading</h2>
+                            <div className="bookshelf-books">
+                                <ol className="books-grid">
+                                    <Book />
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
                 <div className="open-search">
                     <button onClick={() => props.openSearch()}>Add a book</button>
@@ -29,7 +32,8 @@ function BookShelf(props) {
 }
 
 BookShelf.propTypes = {
-    openSearch: PropTypes.func.isRequired
+    openSearch: PropTypes.func.isRequired,
+    books: PropTypes.array.isRequired
 }
 
 export default BookShelf

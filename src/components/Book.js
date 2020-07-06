@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
+import React from 'react'
 
-export class Book extends Component {
-    render() {
-        return (
+function Book(props) {
+    return (
+        <div>
             <div>
                 <li>
                     <div className="book">
@@ -18,16 +18,17 @@ export class Book extends Component {
                                 </select>
                             </div>
                         </div>
-                        <div className="book-title">To Kill a Mockingbird</div>
+                        <div className="book-title">Title</div>
                         <div className="book-authors">Harper Lee</div>
                     </div>
                 </li>
             </div>
-        )
-    }
+        </div>
+    )
 }
 
 export default Book
+
 
 
 
