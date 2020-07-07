@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types';
 // import { Link } from 'react-router-dom';
 import Book from './Book';
@@ -7,7 +7,7 @@ function Search(props) {
 
   const { results, searchBook } = props
 
-  // // Equivalent to componentDidMount of class Component.
+  // Equivalent to componentDidMount of class Component.
   // useEffect(() => {
   //   searchBook('Artificial')
   //   return () => {
