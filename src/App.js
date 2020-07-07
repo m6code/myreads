@@ -17,15 +17,17 @@ class BooksApp extends React.Component {
       this.setState({ books })
       // console.log(this.state.books)
     })
-    //this.queryBooks("Art");
+    this.queryBooks("Art");
   }
 
   queryBooks = (val) => {
     let query = val.trim()
     BooksAPI.search(query)
       .then((queryResult) => {
-        this.setState({ searchResults: queryResult })
-        //console.log(this.state.searchResults)
+        if (!queryResult.error && queryResult !== 'undefined') {
+          this.setState({ searchResults: queryResult })
+          console.log(this.state.searchResults)
+        }
       })
   }
 

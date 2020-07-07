@@ -45,7 +45,7 @@ function Search(props) {
         <div className="search-books-results">
           <div className="bookshelf-books">
             <ol className="books-grid">
-              {results !== 'undefined' && results.map(book => (
+              {results.map(book => (
                 <Book
                   key={book.id}
                   book={book} />
