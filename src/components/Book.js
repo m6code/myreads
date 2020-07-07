@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 
 function Book(props) {
     const { book } = props;
+    // console.log(book)
     return (
         <div>
             <div>

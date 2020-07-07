@@ -8,15 +8,25 @@ import { Route } from 'react-router-dom'
 
 class BooksApp extends React.Component {
   state = {
-    books: []
+    books: [],
+    searchResults: [],
   }
 
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
-      console.log(this.state.books)
+      // console.log(this.state.books)
     })
+    //this.queryBooks("Art");
+  }
 
+  queryBooks = (val) => {
+    let query = val.trim()
+    BooksAPI.search(query)
+      .then((queryResult) => {
+        this.setState({ searchResults: queryResult })
+        //console.log(this.state.searchResults)
+      })
   }
 
   render() {
@@ -31,9 +41,12 @@ class BooksApp extends React.Component {
         }
         />
 
-        <Route path='/search' render={({ history }) => (
-          <Search history={history} />
-        )}
+        <Route path='/search' render={({ history }) =>
+          <Search history={history}
+            searchBook={this.queryBooks}
+            results={this.state.searchResults}
+          />
+        }
         />
       </div>
     )
