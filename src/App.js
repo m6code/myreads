@@ -26,9 +26,21 @@ class BooksApp extends React.Component {
       .then((queryResult) => {
         if (!queryResult.error && queryResult !== 'undefined') {
           this.setState({ searchResults: queryResult })
-          console.log(this.state.searchResults)
+          //console.log(this.state.searchResults)
         }
       })
+  }
+
+  updateBookShelf = (book, toShelf) => {
+    if (this.state.books) {
+      BooksAPI.update(book, toShelf).then(() => {
+        book.shelf = toShelf;
+        this.setState(prevState => ({
+          books: prevState.books.filter(b => b.id !== book.id).concat([book])
+        }))
+      })
+    }
+    console.log(this.state.books);
   }
 
   render() {
@@ -39,6 +51,7 @@ class BooksApp extends React.Component {
           <BookShelf
             books={this.state.books}
             history={history}
+            onMove={this.updateBookShelf}
           />
         }
         />
