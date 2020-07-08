@@ -27,7 +27,8 @@ function BookShelf(props) {
                                                 .map(book => (
                                                     <Book
                                                         key={book.id}
-                                                        book={book} />
+                                                        book={book} 
+                                                        onMove={props.onMove}  />
                                                 ))
                                             }
                                         </ol>
@@ -54,7 +55,8 @@ function BookShelf(props) {
 
 BookShelf.propTypes = {
     history: PropTypes.object.isRequired,
-    books: PropTypes.array.isRequired
+    books: PropTypes.array.isRequired,
+    onMove: PropTypes.func.isRequired
 }
 
 export default BookShelf
