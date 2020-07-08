@@ -5,7 +5,7 @@ import Book from './Book';
 
 function Search(props) {
 
-  const { results, searchBook } = props
+  const { results, searchBook, onMove } = props
 
   // Equivalent to componentDidMount of class Component.
   // useEffect(() => {
@@ -48,7 +48,8 @@ function Search(props) {
               {results.map(book => (
                 <Book
                   key={book.id}
-                  book={book} />
+                  book={book}
+                  onMove={onMove} />
               ))}
             </ol>
           </div>
@@ -61,7 +62,8 @@ function Search(props) {
 Search.propTypes = {
   history: PropTypes.object.isRequired,
   results: PropTypes.array,
-  searchBook: PropTypes.func.isRequired
+  searchBook: PropTypes.func.isRequired,
+  onMove: PropTypes.func.isRequired
 }
 
 export default Search

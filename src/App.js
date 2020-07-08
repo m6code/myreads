@@ -40,7 +40,7 @@ class BooksApp extends React.Component {
         }))
       })
     }
-    console.log(this.state.books);
+    ///console.log(this.state.books);
   }
 
   render() {
@@ -60,6 +60,7 @@ class BooksApp extends React.Component {
           <Search history={history}
             searchBook={this.queryBooks}
             results={this.state.searchResults}
+            onMove={this.updateBookShelf}
           />
         }
         />
