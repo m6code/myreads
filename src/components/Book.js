@@ -17,7 +17,9 @@ function Book(props) {
                                     <div className='txt'>
                                         <div className={`ribbon ribbon-top-right ribbon-${shelf.toLowerCase()}`}>
                                             <span>
-                                                {shelf}
+                                                {shelf === 'currentlyReading' && 'Reading'}
+                                                {shelf === 'wantToRead' && "To Read"} 
+                                                {shelf === 'read' && "Read"}
                                             </span>
                                         </div>
                                     </div>
@@ -25,7 +27,7 @@ function Book(props) {
                             }
 
                             <div className="book-shelf-changer">
-                                <select value={book.shelf} onChange={(e) => onMove(book, e.target.value)}>
+                                <select value={shelf} onChange={(e) => onMove(book, e.target.value)}>
                                     <option value="move" disabled>Move to...</option>
                                     <option value="currentlyReading">Currently Reading</option>
                                     <option value="wantToRead">Want to Read</option>
@@ -48,10 +50,10 @@ function Book(props) {
 Book.propTypes = {
     book: PropTypes.object.isRequired,
     onMove: PropTypes.func.isRequired,
-    shelf : PropTypes.string
+    shelf: PropTypes.string
 }
 
-Book.defaultProps ={
+Book.defaultProps = {
     shelf: 'none',
 }
 
