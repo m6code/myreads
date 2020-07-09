@@ -251,13 +251,13 @@ button:active {
 }
 
 .ribbon-currentlyreading span {
-  background-color: #2980b9;
+  background-color: #2f6836;
 }
 
 .ribbon-wanttoread span{
-  background-color: #9932CC;
+  background-color: rgb(47, 90, 124);
 }
 
 .ribbon-read span{
-  background-color: #006400;
+  background-color: #52322c;
 }
