@@ -11,6 +11,17 @@ function Book(props) {
                     <div className="book">
                         <div className="book-top">
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
+
+                            <div className="ribbon">
+                                <div className='txt'>
+                                    <div className={`ribbon ribbon-top-right ribbon-${book.shelf.toLowerCase()}`}>
+                                        <span>
+                                            {book.shelf}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+
                             <div className="book-shelf-changer">
                                 <select value={book.shelf} onChange={(e) => onMove(book, e.target.value)}>
                                     <option value="move" disabled>Move to...</option>
