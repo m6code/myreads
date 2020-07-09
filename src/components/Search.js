@@ -49,7 +49,8 @@ function Search(props) {
                 <Book
                   key={book.id}
                   book={book}
-                  onMove={onMove} />
+                  onMove={onMove}
+                  shelf={book.shelf} />
               ))}
             </ol>
           </div>

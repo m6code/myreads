@@ -27,8 +27,9 @@ function BookShelf(props) {
                                                 .map(book => (
                                                     <Book
                                                         key={book.id}
-                                                        book={book} 
-                                                        onMove={props.onMove}  />
+                                                        book={book}
+                                                        onMove={props.onMove}
+                                                        shelf={book.shelf} />
                                                 ))
                                             }
                                         </ol>
@@ -46,7 +47,7 @@ function BookShelf(props) {
                     {/* <Link to='/search'>
                         <button>Add a book</button>
                     </Link> */}
-                    
+
                 </div>
             </div>
         </div>

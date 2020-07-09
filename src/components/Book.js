@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types';
 
 function Book(props) {
-    const { book, onMove } = props;
+    const { book, onMove, shelf } = props;
     // console.log(book)
     return (
         <div>
@@ -12,15 +12,17 @@ function Book(props) {
                         <div className="book-top">
                             <div className="book-cover" style={{ width: 128, height: 193, backgroundImage: `url(${book.imageLinks.smallThumbnail})` }}></div>
 
-                            <div className="ribbon">
-                                <div className='txt'>
-                                    <div className={`ribbon ribbon-top-right ribbon-${book.shelf.toLowerCase()}`}>
-                                        <span>
-                                            {book.shelf}
-                                        </span>
+                            {shelf !== 'undefined' &&
+                                <div className="ribbon">
+                                    <div className='txt'>
+                                        <div className={`ribbon ribbon-top-right ribbon-${shelf.toLowerCase()}`}>
+                                            <span>
+                                                {shelf}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                            }
 
                             <div className="book-shelf-changer">
                                 <select value={book.shelf} onChange={(e) => onMove(book, e.target.value)}>
@@ -45,7 +47,12 @@ function Book(props) {
 
 Book.propTypes = {
     book: PropTypes.object.isRequired,
-    onMove: PropTypes.func.isRequired
+    onMove: PropTypes.func.isRequired,
+    shelf : PropTypes.string
+}
+
+Book.defaultProps ={
+    shelf: 'none',
 }
 
 export default Book

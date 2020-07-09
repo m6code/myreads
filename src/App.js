@@ -15,7 +15,7 @@ class BooksApp extends React.Component {
   componentDidMount() {
     BooksAPI.getAll().then((books) => {
       this.setState({ books })
-      // console.log(this.state.books)
+      console.log(this.state.books)
     })
     this.queryBooks("Art");
   }
@@ -25,8 +25,8 @@ class BooksApp extends React.Component {
     BooksAPI.search(query)
       .then((queryResult) => {
         if (!queryResult.error && queryResult !== 'undefined') {
-          this.setState({ searchResults: queryResult })
-          //console.log(this.state.searchResults)
+          this.setState({ searchResults: queryResult})
+          console.log(this.state.searchResults)
         }
       })
   }
