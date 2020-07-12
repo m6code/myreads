@@ -3,7 +3,13 @@ import * as BooksAPI from './BooksAPI'
 import './App.css'
 import BookShelf from './components/BookShelf'
 import Search from './components/Search'
-import { Route } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
+import NotFound from './components/NotFound'
+
+
+// - A <Switch> renders the first child <Route> that matches
+// - A <Redirect> may be used to redirect old URLs to new ones
+// - A <Route path="*"> always matches
 
 
 class BooksApp extends React.Component {
@@ -25,7 +31,7 @@ class BooksApp extends React.Component {
     BooksAPI.search(query)
       .then((queryResult) => {
         if (!queryResult.error && queryResult !== 'undefined') {
-          this.setState({ searchResults: queryResult})
+          this.setState({ searchResults: queryResult })
           console.log(this.state.searchResults)
         }
       })
@@ -46,24 +52,32 @@ class BooksApp extends React.Component {
   render() {
     return (
       <div className="app">
-
-        <Route exact path='/' render={({ history }) =>
-          <BookShelf
-            books={this.state.books}
-            history={history}
-            onMove={this.updateBookShelf}
+        <Switch>
+          <Route exact path='/' render={({ history }) =>
+            <BookShelf
+              books={this.state.books}
+              history={history}
+              onMove={this.updateBookShelf}
+            />
+          }
           />
-        }
-        />
 
-        <Route path='/search' render={({ history }) =>
-          <Search history={history}
-            searchBook={this.queryBooks}
-            results={this.state.searchResults}
-            onMove={this.updateBookShelf}
+          <Route path='/search' render={({ history }) =>
+            <Search history={history}
+              searchBook={this.queryBooks}
+              results={this.state.searchResults}
+              onMove={this.updateBookShelf}
+            />
+          }
           />
-        }
-        />
+
+          <Route path="/home">
+            <Redirect to="/" />
+          </Route>
+
+          <Route path="*" component={NotFound} />
+
+        </Switch>
       </div>
     )
   }

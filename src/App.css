@@ -261,3 +261,12 @@ button:active {
 .ribbon-read span{
   background-color: #52322c;
 }
+
+
+.main-content {
+  padding: 1em 2em;
+}
+
+.not-found {
+  text-align: center;
+}
